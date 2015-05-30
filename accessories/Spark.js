@@ -53,7 +53,7 @@ function callFunction(that, func, value) {
   var request = httpSync.request({
     method: 'POST',
     headers: {"Authorization": "Bearer "+token},
-    body: value,
+    body: "args="+value,
 
     protocol: 'https',
     host: 'api.spark.io',
