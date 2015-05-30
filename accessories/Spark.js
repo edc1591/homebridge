@@ -16,7 +16,7 @@ function Spark(log, config) {
 
 function setColor(that, r, g, b) {
   var result = callFunction(that, 'setColor', r+","+g+","+b);
-  console.log("Settings color "+r+","+g+","+b);
+  console.log("Setting color "+r+","+g+","+b);
   console.log(result);
 }
 
