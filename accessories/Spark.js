@@ -16,6 +16,7 @@ function Spark(log, config) {
 
 function setColor(that, r, g, b) {
   var result = callFunction(that, 'setColor', r+","+g+","+b);
+  console.log("Settings color "+r+","+g+","+b);
   console.log(result);
 }
 
@@ -35,7 +36,7 @@ function readVariable(that, variable) {
     method: 'GET',
     headers: {"Authorization": "Bearer "+token},
     body: '',
- 
+
     protocol: 'https',
     host: 'api.spark.io',
     port: 443,
@@ -53,7 +54,7 @@ function callFunction(that, func, value) {
     method: 'POST',
     headers: {"Authorization": "Bearer "+token},
     body: value,
- 
+
     protocol: 'https',
     host: 'api.spark.io',
     port: 443,
@@ -95,9 +96,9 @@ Spark.prototype = {
 
     var binaryState = powerOn ? "0,255,0" : "0,0,0";
     var that = this;
-    
+
     this.log("Setting power state of " + this.name + " to " + powerOn);
-    
+
     if (powerOn) {
       this.animation = 1;
       this.brightness = 100;
@@ -130,29 +131,29 @@ Spark.prototype = {
 
   setBrightnessLevel: function(value) {
     var that = this;
-    
+
     this.log("Setting brightness level to " + value);
     this.brightness = value;
-    
+
     rgb = HSVtoRGB(this.hue / 360, this.saturation / 100, this.brightness / 100);
     setColor(that, rgb.r, rgb.g, rgb.b);
   },
 
   setAnimation: function(value) {
     var that = this;
-    
+
     this.log("Setting animation to " + value);
     this.animation = value;
-    
+
     animate(that, this.animation, this.brightness, this.speed);
   },
 
   setSpeed: function(value) {
     var that = this;
-    
+
     this.log("Setting speed to " + value);
     this.speed = value;
-    
+
     animate(that, this.animation, this.brightness, this.speed);
   },
 
