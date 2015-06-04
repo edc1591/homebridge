@@ -20,8 +20,8 @@ function setColor(that, r, g, b) {
   console.log(result);
 }
 
-function animate(that, animation, brightness, speed) {
-  var result = callFunction(that, 'animate', animation+","+brightness+","+speed);
+function animate(that, animation, speed, brightness) {
+  var result = callFunction(that, 'animate', animation+","+speed+","+brightness);
   console.log(result);
 }
 
@@ -103,7 +103,7 @@ Spark.prototype = {
       this.animation = 1;
       this.brightness = 100;
       this.speed = 200;
-      animate(that, this.animation, 255, 200);
+      animate(that, this.animation, 200, 255);
     } else {
       setColor(that, 0, 0, 0);
     }
@@ -145,7 +145,7 @@ Spark.prototype = {
     this.log("Setting animation to " + value);
     this.animation = value;
 
-    animate(that, this.animation, this.brightness, this.speed);
+    animate(that, this.animation, this.speed, this.brightness);
   },
 
   setSpeed: function(value) {
@@ -154,7 +154,7 @@ Spark.prototype = {
     this.log("Setting speed to " + value);
     this.speed = value;
 
-    animate(that, this.animation, this.brightness, this.speed);
+    animate(that, this.animation, this.speed, this.brightness);
   },
 
   getServices: function() {
